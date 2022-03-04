@@ -1,0 +1,74 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace odev_1
+{
+    class Program
+    {
+        public static bool asalmi(int sayi)
+        {
+            bool durum = false;
+
+            int kontrol = 0;
+
+            for (int i = 2; i < sayi; i++)
+            {
+                if (sayi % i == 0) 
+                {
+                    kontrol = 1;
+                    break;
+                }
+            }
+            if (kontrol == 1)
+            {
+                durum = false;
+            }
+            else
+            {
+                durum = true;
+            }
+            return durum;
+        }
+
+        static void Main(string[] args)
+        {
+            int toplam = 0, ortalama = 0;
+            ArrayList asalSayilar = new ArrayList();
+            ArrayList asalOlmayanSayilar = new ArrayList();
+            for (int i = 0; i < 10; i++)
+            {
+                Console.Write("Sayıyı Girin : ");
+                int s = Convert.ToInt32(Console.ReadLine());
+                toplam += s;
+                if (asalmi(s))
+                {
+                    asalSayilar.Add(s);
+                }
+                else
+                {
+                    asalOlmayanSayilar.Add(s);
+                }
+            }
+            ortalama = toplam / 10;
+            Console.WriteLine();
+            Console.WriteLine("===========================");
+            Console.WriteLine("ASAL SAYILAR");
+            foreach (int sayi in asalSayilar)
+            {
+                Console.Write(sayi + "    ");
+            }
+            Console.WriteLine();
+            Console.WriteLine("ASAL OLMAYAN SAYILAR");
+            Console.WriteLine("===========================");
+            foreach (int sayi in asalOlmayanSayilar)
+            {
+                Console.Write(sayi + "    ");
+            }
+            Console.ReadKey();
+        }
+    }
+}
